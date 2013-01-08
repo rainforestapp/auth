@@ -54,22 +54,24 @@ describe RainforestAuth do
     before :all do
       @auth = RainforestAuth.new('key')
       @object = "test"
-      @object.stub(:test) { 3 }
+      @object.stub(:some_method) { 3 }
+
+      @digest = 'f02f1af34df3b86aa1da6ecf4232817f83fdf8b9'
     end
 
     it "executes the block if there is a valid signature" do
-      @object.should_receive :test
+      @object.should_receive :some_method
 
       @auth.run_if_valid(@digest, 'test', {option: 1}) {
-        @object.test
+        @object.some_method
       }
     end
 
     it "does not execute the block for invalid signatures" do
-      @object.should_not_receive :test
+      @object.should_not_receive :some_method
 
       @auth.run_if_valid(@digest, 'test', {option: 2}) {
-        @object.test
+        @object.some_method
       }
     end
 
