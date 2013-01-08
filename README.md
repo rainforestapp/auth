@@ -2,7 +2,19 @@
 
 # Rainforest Auth
 
-Allows verification of Rainforest webhook messages.
+Allows verification of Rainforest webhook messages using your private API key.
+
+## Installation
+
+Rainforest Auth is available as a gem, to install it just install the gem:
+
+    gem install rainforest_auth
+
+If you're using Bundler, add the gem to Gemfile.
+
+    gem 'rainforest_auth'
+
+Then run bundle install.
 
 ## Example
 
