@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.description = "Signs / Authenticates messages"
   s.authors     = ["Russell Smith"]
   s.email       = "russ@rainforestqa.com"
-  s.files       = ["lib/rainforest_auth.rb"]
+  s.files       = ["lib/rainforest/auth.rb"]
   s.homepage    = "https://www.rainforestqa.com/"
 
   # signing key and certificate chain
