@@ -16,7 +16,7 @@ If you're using Bundler, add the gem to Gemfile.
 
 Then run bundle install.
 
-## Example
+## Examples
 
 Checking if the signature is valid;
 
