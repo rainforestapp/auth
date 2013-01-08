@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/rainforestapp/auth.png)](https://travis-ci.org/rainforestapp/auth)
+[![Build Status](https://travis-ci.org/rainforestapp/auth.png?branch=master)](https://travis-ci.org/rainforestapp/auth)
 
 # Rainforest Auth
 
