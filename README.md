@@ -12,7 +12,6 @@ require "rainforest/auth"
 # Replace test with your key
 r_auth = RainforestAuth.new 'test'
 
-
 # Check the digest is correct
 if r_auth.verify digest, command, options
     puts "The digest was valid."
@@ -28,7 +27,6 @@ require "rainforest/auth"
 
 # Replace test with your key
 r_auth = RainforestAuth.new 'test'
-
 
 # Run a block if it works
 r_auth.run_if_valid(digest, command, options) {
