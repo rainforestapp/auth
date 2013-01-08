@@ -21,7 +21,11 @@ describe RainforestAuth do
     end
 
     it "returns the expected signature" do
-      @auth.sign 'test', {option: 1}
+      @auth.sign('test', {option: 1}).should == 'f02f1af34df3b86aa1da6ecf4232817f83fdf8b9'
+    end
+
+    it "changes the signature with different data" do
+      @auth.sign('test', {option: 2}).should_not == 'f02f1af34df3b86aa1da6ecf4232817f83fdf8b9'
     end
 
   end
