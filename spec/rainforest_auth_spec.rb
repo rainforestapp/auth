@@ -33,9 +33,18 @@ describe RainforestAuth do
 
   context ".verify" do
 
-    it "returns false for a bad signature"
+    before :all do
+      @auth = RainforestAuth.new('key')
+      @digest = 'f02f1af34df3b86aa1da6ecf4232817f83fdf8b9'
+    end
 
-    it "returns true for a valid signature"
+    it "returns true for a valid signature" do
+      @auth.verify(@digest, 'test', {option: 1}).should be_true
+    end
+
+    it "returns false for a bad signature" do
+      @auth.verify(@digest, 'test', {option: 2}).should be_false
+    end
 
   end
 
