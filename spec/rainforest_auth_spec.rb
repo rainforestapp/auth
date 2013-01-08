@@ -60,7 +60,7 @@ describe RainforestAuth do
     it "executes the block if there is a valid signature" do
       @object.should_receive :test
 
-      @auth.run_if_valid('key', 'test', {option: 1}) {
+      @auth.run_if_valid(@digest, 'test', {option: 1}) {
         @object.test
       }
     end
@@ -68,7 +68,7 @@ describe RainforestAuth do
     it "does not execute the block for invalid signatures" do
       @object.should_not_receive :test
 
-      @auth.run_if_valid('key', 'testxx', {option: 1}) {
+      @auth.run_if_valid(@digest, 'test', {option: 2}) {
         @object.test
       }
     end
