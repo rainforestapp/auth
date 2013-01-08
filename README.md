@@ -47,3 +47,9 @@ r_auth.run_if_valid(digest, command, options) {
     puts "The digest was valid."
 }
 ```
+
+## License
+MIT License. See [LICENSE](LICENSE) for details.
+
+## Copyright
+Copyright (c) 2013 CLDRDR, Inc.
