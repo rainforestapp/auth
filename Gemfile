@@ -5,5 +5,4 @@ group :development, :test do
   gem "rake"
   gem "rspec"
   gem "simplecov"
-  gem "awesome_print"
 end
