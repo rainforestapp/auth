@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/rainforestapp/auth.png)](https://travis-ci.org/rainforestapp/auth)
+
 # Rainforest Auth
 
 Allows verification of Rainforest webhook messages.
