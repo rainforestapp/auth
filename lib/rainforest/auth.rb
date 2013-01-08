@@ -7,7 +7,6 @@
 
 require 'openssl'
 require 'json'
-require 'awesome_print'
 
 class RainforestAuth
 
