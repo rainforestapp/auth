@@ -49,7 +49,7 @@ r_auth.run_if_valid(digest, command, options) {
 ```
 
 ## License
-MIT License. See [LICENSE](LICENSE) for details.
+MIT License. See [LICENSE](blob/master/LICENSE) for details.
 
 ## Copyright
 Copyright (c) 2013 CLDRDR, Inc.
