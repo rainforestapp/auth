@@ -28,6 +28,10 @@ describe RainforestAuth do
       @auth.sign('test', {option: 2}).should_not == 'f02f1af34df3b86aa1da6ecf4232817f83fdf8b9'
     end
 
+    it "works with no options parameter" do
+      @auth.sign('test').should == 'b7e8c3860853da23dbb2d99d33c1cb1cdcce30c7'
+    end
+
   end
 
 
@@ -44,6 +48,10 @@ describe RainforestAuth do
 
     it "returns false for a bad signature" do
       @auth.verify(@digest, 'test', {option: 2}).should be_false
+    end
+
+    it "works with no options parameter" do
+      @auth.verify('b7e8c3860853da23dbb2d99d33c1cb1cdcce30c7', 'test').should be_true
     end
 
   end
