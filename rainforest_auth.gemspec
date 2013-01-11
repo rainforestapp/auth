@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = "rainforest_auth"
-  s.version     = "0.0.2"
+  s.version     = "0.0.3"
   s.date        = "2013-01-08"
   s.summary     = "Authentication of messages for Rainforest webhooks"
   s.description = "Signs / Authenticates messages"
