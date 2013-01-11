@@ -18,12 +18,12 @@ class RainforestAuth
   end
 
   # Return a signature for a command and specified options
-  def sign command, options
+  def sign command, options = nil
     OpenSSL::HMAC.hexdigest(digest, @key, merge_data(command, options))
   end
 
   # Verify a digest vs command and options
-  def verify digest, command, options
+  def verify digest, command, options = nil
     digest == sign(command, options)
   end
 
