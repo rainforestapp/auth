@@ -18,6 +18,41 @@ Then run bundle install.
 
 ## Examples
 
+Receive a notice that a run is starting and notify Rainforest when you are ready for a run to start
+
+```ruby
+require "rainforest/auth"
+require "httparty"
+
+class CallbackController < ApplicationController
+
+  def new
+    # Replace test with your key
+    @r_auth = RainforestAuth.new 'test'
+  end
+
+  def callback
+    # Check the callback is valid
+    @r_auth.run_if_valid(params[:digest], params[:action], params[:options]) do
+
+        # Work out what to do
+        case params[:action]
+            when 'before_run'
+                # Reset the database?
+            when 'after_run'
+                # Trigger deploy!
+        end
+
+        # Get the callback url for this run
+        callback_url = @r_auth.get_run_callback(run_id, params[:action])
+
+        # Notify Rainforest you are ready for a run to start
+        HTTParty.get @url
+    end
+  end
+end
+```
+
 Checking if the signature is valid;
 
 ```ruby
