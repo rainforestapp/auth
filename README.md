@@ -1,5 +1,7 @@
 [![Build Status](https://travis-ci.org/rainforestapp/auth.png?branch=master)](https://travis-ci.org/rainforestapp/auth)
 
+[![Dependency Status](https://gemnasium.com/rainforestapp/auth.png)](https://gemnasium.com/rainforestapp/auth)
+
 # Rainforest Auth
 
 Allows verification of Rainforest webhook messages using your private API key.
