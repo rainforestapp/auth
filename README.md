@@ -44,7 +44,7 @@ class CallbackController < ApplicationController
         end
 
         # Get the callback url for this run
-        callback_url = @r_auth.get_run_callback(run_id, params[:action])
+        callback_url = @r_auth.get_run_callback(params[:options]['run_id'], params[:action])
 
         # Notify Rainforest you are ready for a run to start
         HTTParty.get @url
