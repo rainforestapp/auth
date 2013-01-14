@@ -49,7 +49,9 @@ class CallbackController < ApplicationController
         # Notify Rainforest you are ready for a run to start
         HTTParty.get @url
     end
+
   end
+
 end
 ```
 
