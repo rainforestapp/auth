@@ -17,6 +17,11 @@ class RainforestAuth
     self
   end
 
+  def get_run_callback run_id, action
+    digest = sign(action, {run_id: run_id})
+    "https://www.rainforestqa.com/api/1/callback/run/#{run_id}/#{action}/#{digest}"
+  end
+
   # Return a signature for a command and specified options
   def sign command, options = nil
     OpenSSL::HMAC.hexdigest(digest, @key, merge_data(command, options))

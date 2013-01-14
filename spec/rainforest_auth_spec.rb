@@ -14,6 +14,36 @@ describe RainforestAuth do
   end
 
 
+  context ".get_run_callback" do
+
+    before :all do
+      @run_id = '123456'
+      @auth = RainforestAuth.new('key')
+
+      @url = @auth.get_run_callback @run_id, 'before_run'
+      @url_split = @url.split '/'
+    end
+
+    it "returns a url" do
+      @url[0..4].should == 'https'
+    end
+
+    it "has the correct run_id" do
+      @url_split[7].should == @run_id
+    end
+
+    it "has the correct action" do
+      @url_split[8].should == 'before_run'
+    end
+
+    it "has the correct digest" do
+      digest = @url_split[9]
+      @auth.verify(digest, 'before_run', {run_id: @run_id}).should be_true
+    end
+
+  end
+
+
   context ".sign" do
 
     before :all do
