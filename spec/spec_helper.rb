@@ -10,5 +10,4 @@ require_relative '../lib/rainforest/auth'
 # Configure rspec
 RSpec.configure do |config|
   config.mock_with :rspec
-  config.fail_fast = true
 end
