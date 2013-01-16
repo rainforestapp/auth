@@ -51,15 +51,15 @@ describe RainforestAuth do
     end
 
     it "returns the expected signature" do
-      @auth.sign('test', {option: 1}).should == 'f02f1af34df3b86aa1da6ecf4232817f83fdf8b9'
+      @auth.sign('test', {option: 1}).should == '5957ba2707a51852d32309d16184e8adce9c4d8e'
     end
 
     it "changes the signature with different data" do
-      @auth.sign('test', {option: 2}).should_not == 'f02f1af34df3b86aa1da6ecf4232817f83fdf8b9'
+      @auth.sign('test', {option: 2}).should_not == '5957ba2707a51852d32309d16184e8adce9c4d8e'
     end
 
     it "works with no options parameter" do
-      @auth.sign('test').should == 'b7e8c3860853da23dbb2d99d33c1cb1cdcce30c7'
+      @auth.sign('test').should == '0a41bdf26fac08a89573a7f5efe0a5145f2730df'
     end
 
   end
@@ -69,7 +69,7 @@ describe RainforestAuth do
 
     before :all do
       @auth = RainforestAuth.new('key')
-      @digest = 'f02f1af34df3b86aa1da6ecf4232817f83fdf8b9'
+      @digest = '5957ba2707a51852d32309d16184e8adce9c4d8e'
     end
 
     it "returns true for a valid signature" do
@@ -81,7 +81,7 @@ describe RainforestAuth do
     end
 
     it "works with no options parameter" do
-      @auth.verify('b7e8c3860853da23dbb2d99d33c1cb1cdcce30c7', 'test').should be_true
+      @auth.verify('0a41bdf26fac08a89573a7f5efe0a5145f2730df', 'test').should be_true
     end
 
   end
@@ -94,7 +94,7 @@ describe RainforestAuth do
       @object = "test"
       @object.stub(:some_method) { 3 }
 
-      @digest = 'f02f1af34df3b86aa1da6ecf4232817f83fdf8b9'
+      @digest = '5957ba2707a51852d32309d16184e8adce9c4d8e'
     end
 
     it "executes the block if there is a valid signature" do
