@@ -51,7 +51,7 @@ class RainforestCallbacksController < ApplicationController
   
 private
   def rainforest_auther
-      # Replace test with your key\
+    # Replace test with your key
     @rainforest_auther ||=  RainforestAuth.new 'test'
   end
 
