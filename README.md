@@ -30,10 +30,10 @@ class RainforestCallbacksController < ApplicationController
 
   def create
     # Check the callback is valid
-    rainforest_auther.run_if_valid(params[:digest], params[:action], params[:options]) do
+    rainforest_auther.run_if_valid(params[:digest], params[:callback_type], params[:options]) do
 
         # Work out what to do
-        case params[:action]
+        case params[:callback_type]
             when 'before_run'
                 # Reset the database?
             when 'after_run'
@@ -41,14 +41,14 @@ class RainforestCallbacksController < ApplicationController
         end
 
         # Get the callback url for this run
-        callback_url = rainforest_auther.get_run_callback(params[:options]['run_id'], params[:action])
+        callback_url = rainforest_auther.get_run_callback(params[:options]['run_id'], params[:callback_type])
 
         # Notify Rainforest you are ready for a run to start
         HTTParty.post callback_url
     end
 
   end
-  
+
 private
   def rainforest_auther
     # Replace test with your key
@@ -67,7 +67,7 @@ require "rainforest/auth"
 r_auth = RainforestAuth.new 'test'
 
 # Check the digest is correct
-if r_auth.verify digest, command, options
+if r_auth.verify digest, callback_type, options
     puts "The digest was valid."
 else
     puts "The digest was invalid!"
@@ -83,7 +83,7 @@ require "rainforest/auth"
 r_auth = RainforestAuth.new 'test'
 
 # Run a block if it works
-r_auth.run_if_valid(digest, command, options) {
+r_auth.run_if_valid(digest, callback_type, options) {
     puts "The digest was valid."
 }
 ```
