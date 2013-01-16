@@ -30,7 +30,7 @@ class RainforestCallbacksController < ApplicationController
 
   def create
     # Check the callback is valid
-    @rainforest_auther.run_if_valid(params[:digest], params[:action], params[:options]) do
+    rainforest_auther.run_if_valid(params[:digest], params[:action], params[:options]) do
 
         # Work out what to do
         case params[:action]
