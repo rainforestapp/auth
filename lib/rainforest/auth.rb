@@ -17,25 +17,25 @@ class RainforestAuth
     self
   end
 
-  def get_run_callback run_id, action
-    digest = sign(action, {run_id: run_id})
-    "https://www.rainforestqa.com/api/1/callback/run/#{run_id}/#{action}/#{digest}"
+  def get_run_callback run_id, callback_type
+    digest = sign(callback_type, {run_id: run_id})
+    "https://www.rainforestqa.com/api/1/callback/run/#{run_id}/#{callback_type}/#{digest}"
   end
 
-  # Return a signature for a command and specified options
-  def sign command, options = nil
-    OpenSSL::HMAC.hexdigest(digest, @key, merge_data(command, options))
+  # Return a signature for a callback_type and specified options
+  def sign callback_type, options = nil
+    OpenSSL::HMAC.hexdigest(digest, @key, merge_data(callback_type, options))
   end
 
-  # Verify a digest vs command and options
-  def verify digest, command, options = nil
-    digest == sign(command, options)
+  # Verify a digest vs callback_type and options
+  def verify digest, callback_type, options = nil
+    digest == sign(callback_type, options)
   end
 
   # Run a block if valid
-  def run_if_valid digest, command, options, &block
-    if verify digest, command, options
-      block.call command, options
+  def run_if_valid digest, callback_type, options, &block
+    if verify digest, callback_type, options
+      block.call callback_type, options
     end
   end
 
@@ -45,8 +45,8 @@ class RainforestAuth
     OpenSSL::Digest::Digest.new 'sha1'
   end
 
-  def merge_data command, options
-    {command: command, options: options}.to_json
+  def merge_data callback_type, options
+    {callback_type: callback_type, options: options}.to_json
   end
 
 end
