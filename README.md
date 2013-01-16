@@ -44,7 +44,7 @@ class RainforestCallbacksController < ApplicationController
         callback_url = @rainforest_auther.get_run_callback(params[:options]['run_id'], params[:action])
 
         # Notify Rainforest you are ready for a run to start
-        HTTParty.get callback_url
+        HTTParty.post callback_url
     end
 
   end
