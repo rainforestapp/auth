@@ -26,16 +26,11 @@ Receive a notice that a run is starting and notify Rainforest when you are ready
 require "rainforest/auth"
 require "httparty"
 
-class CallbackController < ApplicationController
+class RainforestCallbacksController < ApplicationController
 
-  def new
-    # Replace test with your key
-    @r_auth = RainforestAuth.new 'test'
-  end
-
-  def callback
+  def create
     # Check the callback is valid
-    @r_auth.run_if_valid(params[:digest], params[:action], params[:options]) do
+    @rainforest_auther.run_if_valid(params[:digest], params[:action], params[:options]) do
 
         # Work out what to do
         case params[:action]
@@ -46,12 +41,18 @@ class CallbackController < ApplicationController
         end
 
         # Get the callback url for this run
-        callback_url = @r_auth.get_run_callback(params[:options]['run_id'], params[:action])
+        callback_url = @rainforest_auther.get_run_callback(params[:options]['run_id'], params[:action])
 
         # Notify Rainforest you are ready for a run to start
         HTTParty.get callback_url
     end
 
+  end
+  
+private
+  def rainforest_auther
+      # Replace test with your key\
+    @rainforest_auther ||=  RainforestAuth.new 'test'
   end
 
 end
