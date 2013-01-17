@@ -1,3 +1,5 @@
+[![Gem Version](https://badge.fury.io/rb/rainforest_auth.png)](http://badge.fury.io/rb/rainforest_auth)
+
 [![Build Status](https://travis-ci.org/rainforestapp/auth.png?branch=master)](https://travis-ci.org/rainforestapp/auth)
 
 [![Dependency Status](https://gemnasium.com/rainforestapp/auth.png)](https://gemnasium.com/rainforestapp/auth)
