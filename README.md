@@ -22,7 +22,7 @@ Then run bundle install.
 
 ## Examples
 
-Receive a notice that a run is starting and notify Rainforest when you are ready for a run to start
+The following example recieves a 'before_run' notification from Rainforest, authenticates it, does a task for you and then notifies Rainforest to continue!
 
 ```ruby
 require "rainforest/auth"
@@ -53,8 +53,7 @@ class RainforestCallbacksController < ApplicationController
 
 private
   def rainforest_auther
-    # Replace test with your key
-    @rainforest_auther ||=  RainforestAuth.new 'test'
+    @rainforest_auther ||=  RainforestAuth.new 'YOUR_KEY_HERE'
   end
 
 end
@@ -65,8 +64,7 @@ Checking if the signature is valid;
 ```ruby
 require "rainforest/auth"
 
-# Replace test with your key
-r_auth = RainforestAuth.new 'test'
+r_auth = RainforestAuth.new 'YOUR_KEY_HERE'
 
 # Check the digest is correct
 if r_auth.verify digest, callback_type, options
@@ -81,8 +79,7 @@ Running a block if the signature is valid;
 ```ruby
 require "rainforest/auth"
 
-# Replace test with your key
-r_auth = RainforestAuth.new 'test'
+r_auth = RainforestAuth.new 'YOUR_KEY_HERE'
 
 # Run a block if it works
 r_auth.run_if_valid(digest, callback_type, options) {
