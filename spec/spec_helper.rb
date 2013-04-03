@@ -2,7 +2,7 @@ require 'rspec'
 
 ENV["RACK_ENV"] ||= 'test'
 
-require_relative '../lib/rainforest/auth'
+require File.expand_path('../lib/rainforest/auth', File.dirname(__FILE__))
 
 # Configure rspec
 RSpec.configure do |config|

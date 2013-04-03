@@ -18,7 +18,7 @@ class RainforestAuth
   end
 
   def get_run_callback run_id, callback_type
-    digest = sign(callback_type, {run_id: run_id})
+    digest = sign(callback_type, {:run_id => run_id})
     "https://www.rainforestqa.com/api/1/callback/run/#{run_id}/#{callback_type}/#{digest}"
   end
 
@@ -46,7 +46,7 @@ class RainforestAuth
   end
 
   def merge_data callback_type, options
-    {callback_type: callback_type, options: options}.to_json
+    {:callback_type => callback_type, :options => options}.to_json
   end
 
 end

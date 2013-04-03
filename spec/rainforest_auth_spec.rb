@@ -38,7 +38,7 @@ describe RainforestAuth do
 
     it "has the correct digest" do
       digest = @url_split[9]
-      @auth.verify(digest, 'before_run', {run_id: @run_id}).should be_true
+      @auth.verify(digest, 'before_run', {:run_id => @run_id}).should be_true
     end
 
   end
@@ -51,11 +51,11 @@ describe RainforestAuth do
     end
 
     it "returns the expected signature" do
-      @auth.sign('test', {option: 1}).should == '5957ba2707a51852d32309d16184e8adce9c4d8e'
+      @auth.sign('test', {:option => 1}).should == '5957ba2707a51852d32309d16184e8adce9c4d8e'
     end
 
     it "changes the signature with different data" do
-      @auth.sign('test', {option: 2}).should_not == '5957ba2707a51852d32309d16184e8adce9c4d8e'
+      @auth.sign('test', {:option => 2}).should_not == '5957ba2707a51852d32309d16184e8adce9c4d8e'
     end
 
     it "works with no options parameter" do
@@ -73,11 +73,11 @@ describe RainforestAuth do
     end
 
     it "returns true for a valid signature" do
-      @auth.verify(@digest, 'test', {option: 1}).should be_true
+      @auth.verify(@digest, 'test', {:option => 1}).should be_true
     end
 
     it "returns false for a bad signature" do
-      @auth.verify(@digest, 'test', {option: 2}).should be_false
+      @auth.verify(@digest, 'test', {:option => 2}).should be_false
     end
 
     it "works with no options parameter" do
@@ -100,7 +100,7 @@ describe RainforestAuth do
     it "executes the block if there is a valid signature" do
       @object.should_receive :some_method
 
-      @auth.run_if_valid(@digest, 'test', {option: 1}) {
+      @auth.run_if_valid(@digest, 'test', {:option => 1}) {
         @object.some_method
       }
     end
@@ -108,7 +108,7 @@ describe RainforestAuth do
     it "does not execute the block for invalid signatures" do
       @object.should_not_receive :some_method
 
-      @auth.run_if_valid(@digest, 'test', {option: 2}) {
+      @auth.run_if_valid(@digest, 'test', {:option => 2}) {
         @object.some_method
       }
     end

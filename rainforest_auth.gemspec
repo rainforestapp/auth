@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.name        = "rainforest_auth"
-  s.version     = "0.0.6"
-  s.date        = "2013-01-16"
+  s.version     = "0.0.7"
+  s.date        = "2013-04-02"
   s.summary     = "Authentication of messages for Rainforest webhooks"
   s.description = "Signs / Authenticates messages"
   s.authors     = ["Russell Smith"]
@@ -13,6 +13,5 @@ Gem::Specification.new do |s|
   s.signing_key = "/Users/russ/.ssh/gem-private_key.pem" unless ENV['CODESHIP']
   s.cert_chain  = ['gem-public_cert.pem']
 
-  s.add_development_dependency 'rspec'
-  s.add_development_dependency 'bundler'
+  s.add_dependency('json')
 end
