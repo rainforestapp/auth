@@ -1,6 +1,3 @@
-require 'simplecov'
-SimpleCov.start
-
 require 'rspec'
 
 ENV["RACK_ENV"] ||= 'test'
