@@ -1,7 +1,5 @@
 describe RainforestAuth do
-
   context "#new" do
-
     it "stores the key" do
       auth = RainforestAuth.new 'key'
       auth.key.should == 'key'
@@ -10,12 +8,9 @@ describe RainforestAuth do
     it "returns itself" do
       RainforestAuth.new('key').should be_an_instance_of RainforestAuth
     end
-
   end
 
-
   context ".get_run_callback" do
-
     before :all do
       @run_id = '123456'
       @auth = RainforestAuth.new('key')
@@ -40,12 +35,9 @@ describe RainforestAuth do
       digest = @url_split[9]
       @auth.verify(digest, 'before_run', {:run_id => @run_id}).should be_true
     end
-
   end
 
-
   context ".sign" do
-
     before :all do
       @auth = RainforestAuth.new('key')
     end
@@ -61,12 +53,9 @@ describe RainforestAuth do
     it "works with no options parameter" do
       @auth.sign('test').should == '0a41bdf26fac08a89573a7f5efe0a5145f2730df'
     end
-
   end
 
-
   context ".verify" do
-
     before :all do
       @auth = RainforestAuth.new('key')
       @digest = '5957ba2707a51852d32309d16184e8adce9c4d8e'
@@ -83,12 +72,9 @@ describe RainforestAuth do
     it "works with no options parameter" do
       @auth.verify('0a41bdf26fac08a89573a7f5efe0a5145f2730df', 'test').should be_true
     end
-
   end
 
-
   context ".run_if_valid" do
-
     before :all do
       @auth = RainforestAuth.new('key')
       @object = "test"
@@ -112,7 +98,5 @@ describe RainforestAuth do
         @object.some_method
       }
     end
-
   end
-
 end

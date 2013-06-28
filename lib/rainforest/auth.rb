@@ -9,7 +9,6 @@ require 'openssl'
 require 'json'
 
 class RainforestAuth
-
   attr_reader :key
 
   def initialize key
@@ -48,5 +47,4 @@ class RainforestAuth
   def merge_data callback_type, options
     {:callback_type => callback_type, :options => options}.to_json
   end
-
 end
