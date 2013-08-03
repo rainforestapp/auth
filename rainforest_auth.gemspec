@@ -8,10 +8,5 @@ Gem::Specification.new do |s|
   s.email       = ["russ@rainforestqa.com", "kellylsbkr@gmail.com"]
   s.files       = ["lib/rainforest/auth.rb"]
   s.homepage    = "https://www.rainforestqa.com/"
-
-  # signing key and certificate chain
-  s.signing_key = "/Users/russ/.ssh/gem-private_key.pem" unless ENV['CODESHIP']
-  s.cert_chain  = ['gem-public_cert.pem']
-
   s.add_dependency('json')
 end
