@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.homepage    = "https://www.rainforestqa.com/"
 
   # signing key and certificate chain
-  s.signing_key = "/Users/russ/.ssh/gem-private_key.pem" unless ENV['TRAVIS']
+  s.signing_key = "/Users/russ/.ssh/gem-private_key.pem" unless ENV['CI']
   s.cert_chain  = ['gem-public_cert.pem']
 
   s.add_dependency('json')
