@@ -18,7 +18,7 @@ class RainforestAuth
 
   def get_run_callback run_id, callback_type
     digest = sign(callback_type, {:run_id => run_id})
-    "https://www.rainforestqa.com/api/1/callback/run/#{run_id}/#{callback_type}/#{digest}"
+    "https://app.rainforestqa.com/api/1/callback/run/#{run_id}/#{callback_type}/#{digest}"
   end
 
   # Return a signature for a callback_type and specified options
