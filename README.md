@@ -29,7 +29,6 @@ require "rainforest/auth"
 require "httparty"
 
 class RainforestCallbacksController < ApplicationController
-
   def create
     # Check the callback is valid
     rainforest_auther.run_if_valid(params[:digest], params[:callback_type], params[:options]) do
@@ -48,14 +47,12 @@ class RainforestCallbacksController < ApplicationController
         # Notify Rainforest you are ready for a run to start
         HTTParty.post callback_url
     end
-
   end
 
 private
   def rainforest_auther
     @rainforest_auther ||=  RainforestAuth.new 'YOUR_KEY_HERE'
   end
-
 end
 ```
 
@@ -64,7 +61,7 @@ Checking if the signature is valid;
 ```ruby
 require "rainforest/auth"
 
-r_auth = RainforestAuth.new 'YOUR_KEY_HERE'
+r_auth = RainforestAuth.new('YOUR_KEY_HERE')
 
 # Check the digest is correct
 if r_auth.verify digest, callback_type, options
@@ -79,7 +76,7 @@ Running a block if the signature is valid;
 ```ruby
 require "rainforest/auth"
 
-r_auth = RainforestAuth.new 'YOUR_KEY_HERE'
+r_auth = RainforestAuth.new('YOUR_KEY_HERE')
 
 # Run a block if it works
 r_auth.run_if_valid(digest, callback_type, options) {

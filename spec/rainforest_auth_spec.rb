@@ -1,7 +1,7 @@
 describe RainforestAuth do
   context "#new" do
     it "stores the key" do
-      auth = RainforestAuth.new 'key'
+      auth = RainforestAuth.new('key')
       auth.key.should == 'key'
     end
 
@@ -15,7 +15,7 @@ describe RainforestAuth do
       @run_id = '123456'
       @auth = RainforestAuth.new('key')
 
-      @url = @auth.get_run_callback @run_id, 'before_run'
+      @url = @auth.get_run_callback(@run_id, 'before_run')
       @url_split = @url.split '/'
     end
 
