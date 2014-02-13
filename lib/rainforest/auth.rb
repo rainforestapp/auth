@@ -31,6 +31,8 @@ class RainforestAuth
   end
 
   # Run a block if valid
+  def run_if_valid(digest, callback_type, options, &block)
+    if verify(digest, callback_type, options)
       block.call(callback_type, options)
     end
   end
@@ -38,7 +40,7 @@ class RainforestAuth
   private
 
   def digest
-    OpenSSL::Digest::Digest.new 'sha1'
+    OpenSSL::Digest.new('sha1')
   end
 
   def merge_data(callback_type, options)
