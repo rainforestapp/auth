@@ -3,7 +3,7 @@
 #
 #
 # @author Russell Smith <russ@rainforestqa.com>
-# @copyright CLDRDR Inc, 2013
+# @copyright CLDRDR Inc, 2014
 
 require 'openssl'
 require 'json'
