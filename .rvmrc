@@ -1,1 +1,1 @@
-rvm use 2.1.0@rainforest-auth --create
+rvm use 2.1.1@rainforest-auth --create

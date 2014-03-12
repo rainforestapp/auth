@@ -5,9 +5,8 @@ Gem::Specification.new do |s|
   s.summary     = "Authentication of messages for Rainforest webhooks"
   s.description = "Signs / Authenticates messages"
   s.authors     = ["Russell Smith"]
-  s.email       = "russ@rainforestqa.com"
+  s.email       = ["russ@rainforestqa.com"]
   s.files       = ["lib/rainforest/auth.rb"]
   s.homepage    = "https://www.rainforestqa.com/"
-
   s.add_dependency('json')
 end
