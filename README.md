@@ -20,7 +20,7 @@ Then run bundle install.
 
 ## Where can I find my API key?
 
-You can find your API key for Rainforest under the [Accounts setting page](https://app.rainforestqa.com/settings/account). If you get stuck finding this, please [reach out](5h9w4xa0@incoming.intercom.io)!
+You can find your API key for Rainforest under the [Accounts setting page](https://app.rainforestqa.com/settings/account). If you get stuck finding this, please [reach out](mailto:5h9w4xa0@incoming.intercom.io)!
 
 ## Examples
 
