@@ -1,12 +1,10 @@
 [![Gem Version](https://badge.fury.io/rb/rainforest_auth.png)](http://badge.fury.io/rb/rainforest_auth)
-
 [![Build Status](https://travis-ci.org/rainforestapp/auth.png?branch=master)](https://travis-ci.org/rainforestapp/auth)
-
 [![Dependency Status](https://gemnasium.com/rainforestapp/auth.png)](https://gemnasium.com/rainforestapp/auth)
 
 # Rainforest Auth
 
-Allows verification of Rainforest webhook messages using your private API key.
+Allows verification of [Rainforest](https://www.rainforestqa.com/) webhook messages using your private API key.
 
 ## Installation
 
@@ -20,9 +18,13 @@ If you're using Bundler, add the gem to Gemfile.
 
 Then run bundle install.
 
+## Where can I find my API key?
+
+You can find your API key for Rainforest under the [Accounts setting page](https://app.rainforestqa.com/settings/account). If you get stuck finding this, please [reach out](5h9w4xa0@incoming.intercom.io)!
+
 ## Examples
 
-The following example recieves a 'before_run' notification from Rainforest, authenticates it, does a task for you and then notifies Rainforest to continue!
+The following example recieves a 'before_run' notification from Rainforest, authenticates it, does a task for you and then notifies Rainforest to continue.
 
 ```ruby
 require "rainforest/auth"
@@ -88,4 +90,4 @@ r_auth.run_if_valid(digest, callback_type, options) {
 MIT License. See [LICENSE](/rainforestapp/auth/blob/master/LICENSE) for details.
 
 ## Copyright
-Copyright (c) 2013 CLDRDR, Inc.
+Copyright (c) 2014 CLDRDR, Inc.
