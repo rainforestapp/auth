@@ -23,7 +23,7 @@ class RainforestAuth
 
   # Return a signature for a callback_type and specified options
   def sign(callback_type, options = nil)
-    OpenSSL::HMAC.hexdigest(digest, @key, merge_data(callback_type, options))
+    OpenSSL::HMAC.hexdigest(digest, Digest::SHA256.hexdigest(@key), merge_data(callback_type, options))
   end
 
   # Verify a digest vs callback_type and options
