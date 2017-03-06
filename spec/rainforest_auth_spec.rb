@@ -85,12 +85,22 @@ describe RainforestAuth do
       @auth.verify(@digest, 'test', {:option => 1}).should be_true
     end
 
+    it "returns true for a valid old signature" do
+      @auth.verify(@old_digest, 'test', {:option => 1}).should be_true
+    end
+
     it "returns false for a bad signature" do
       @auth.verify(@digest, 'test', {:option => 2}).should be_false
     end
 
+    it "returns false for a bad old signature" do
+      @auth.verify(@old_digest, 'test', {:option => 2}).should be_false
+    end
+
     it "works with no options parameter" do
+      #OLD
       @auth.verify('0a41bdf26fac08a89573a7f5efe0a5145f2730df', 'test').should be_true
+      #NEW
       @auth.verify('d38f897889c808c021a8ed97d2caacdac48b8259', 'test').should be_true
     end
   end
