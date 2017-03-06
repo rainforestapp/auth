@@ -55,9 +55,29 @@ describe RainforestAuth do
     end
   end
 
+  #TODO: nuke
+  context ".sign_old" do
+    before :all do
+      @auth = RainforestAuth.new('key')
+    end
+
+    it "returns the expected signature" do
+      @auth.sign_old('test', {:option => 1}).should == '5957ba2707a51852d32309d16184e8adce9c4d8e'
+    end
+
+    it "changes the signature with different data" do
+      @auth.sign_old('test', {:option => 2}).should_not == '5957ba2707a51852d32309d16184e8adce9c4d8e'
+    end
+
+    it "works with no options parameter" do
+      @auth.sign_old('test').should == '0a41bdf26fac08a89573a7f5efe0a5145f2730df'
+    end
+  end
+
   context ".verify" do
     before :all do
       @auth = RainforestAuth.new('key')
+      @old_digest = '5957ba2707a51852d32309d16184e8adce9c4d8e'
       @digest = '65f2253344287b3c5634a1ce6163fb694b2280b1'
     end
 
@@ -70,6 +90,7 @@ describe RainforestAuth do
     end
 
     it "works with no options parameter" do
+      @auth.verify('0a41bdf26fac08a89573a7f5efe0a5145f2730df', 'test').should be_true
       @auth.verify('d38f897889c808c021a8ed97d2caacdac48b8259', 'test').should be_true
     end
   end
