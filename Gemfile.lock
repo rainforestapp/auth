@@ -1,14 +1,14 @@
 PATH
   remote: .
   specs:
-    rainforest_auth (0.0.11)
+    rainforest_auth (0.1.0)
       json
 
 GEM
   remote: http://rubygems.org/
   specs:
     diff-lcs (1.2.5)
-    json (1.8.1)
+    json (2.0.3)
     rake (10.1.1)
     rspec (2.14.1)
       rspec-core (~> 2.14.0)
@@ -28,3 +28,6 @@ DEPENDENCIES
   rainforest_auth!
   rake (>= 0.8.7)
   rspec (>= 2.0)
+
+BUNDLED WITH
+   1.14.4

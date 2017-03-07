@@ -11,8 +11,14 @@ require 'json'
 class RainforestAuth
   attr_reader :key
 
-  def initialize(key)
+  def initialize(key, key_hash=nil)
     @key = key
+
+    if @key.nil?
+      @key_hash = key_hash
+    else
+      @key_hash = Digest::SHA256.hexdigest(key)
+    end
     self
   end
 
@@ -23,12 +29,21 @@ class RainforestAuth
 
   # Return a signature for a callback_type and specified options
   def sign(callback_type, options = nil)
+    OpenSSL::HMAC.hexdigest(digest, @key_hash, merge_data(callback_type, options))
+  end
+
+  # Return a signature for a callback_type and specified options
+  def sign_old(callback_type, options = nil)
     OpenSSL::HMAC.hexdigest(digest, @key, merge_data(callback_type, options))
   end
 
   # Verify a digest vs callback_type and options
   def verify(digest, callback_type, options = nil)
-    digest == sign(callback_type, options)
+    if key.nil?
+      digest == sign(callback_type, options)
+    else
+      digest == sign(callback_type, options) || digest == sign_old(callback_type, options)
+    end
   end
 
   # Run a block if valid
