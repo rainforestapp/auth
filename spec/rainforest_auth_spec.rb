@@ -53,6 +53,12 @@ describe RainforestAuth do
     it "works with no options parameter" do
       @auth.sign('test').should == 'd38f897889c808c021a8ed97d2caacdac48b8259'
     end
+
+    context 'key hash is nil' do
+      it 'raises an exception' do
+        expect { RainforestAuth.new(nil).sign('test') }.to raise_error(RainforestAuth::MissingKeyException)
+      end
+    end
   end
 
   #TODO: nuke
@@ -71,6 +77,12 @@ describe RainforestAuth do
 
     it "works with no options parameter" do
       @auth.sign_old('test').should == '0a41bdf26fac08a89573a7f5efe0a5145f2730df'
+    end
+
+    context 'key is nil' do
+      it 'raises an exception' do
+        expect { RainforestAuth.new(nil, 'I am not nil!').sign_old('test') }.to raise_error(RainforestAuth::MissingKeyException)
+      end
     end
   end
 
