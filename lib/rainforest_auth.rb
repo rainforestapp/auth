@@ -1,5 +1,5 @@
 #
-# Rainforest Authenitcation
+# Rainforest Authentication
 #
 #
 # @author Russell Smith <russ@rainforestqa.com>
@@ -9,6 +9,9 @@ require 'openssl'
 require 'json'
 
 class RainforestAuth
+  class MissingKeyException < StandardError
+  end
+
   attr_reader :key
 
   def initialize(key, key_hash=nil)
@@ -29,11 +32,13 @@ class RainforestAuth
 
   # Return a signature for a callback_type and specified options
   def sign(callback_type, options = nil)
+    raise MissingKeyException, 'Missing key hash' if @key_hash.nil?
     OpenSSL::HMAC.hexdigest(digest, @key_hash, merge_data(callback_type, options))
   end
 
   # Return a signature for a callback_type and specified options
   def sign_old(callback_type, options = nil)
+    raise MissingKeyException, 'Missing key' if @key.nil?
     OpenSSL::HMAC.hexdigest(digest, @key, merge_data(callback_type, options))
   end
 
