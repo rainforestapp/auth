@@ -9,7 +9,7 @@ GEM
   specs:
     diff-lcs (1.2.5)
     json (2.1.0)
-    rake (10.1.1)
+    rake (13.0.1)
     rspec (2.14.1)
       rspec-core (~> 2.14.0)
       rspec-expectations (~> 2.14.0)
@@ -30,4 +30,4 @@ DEPENDENCIES
   rspec (>= 2.0)
 
 BUNDLED WITH
-   1.16.0
+   1.17.3
