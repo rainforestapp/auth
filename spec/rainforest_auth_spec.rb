@@ -11,7 +11,7 @@ describe RainforestAuth do
   end
 
   context ".get_run_callback" do
-    before :all do
+    before do
       @run_id = '123456'
       @auth = RainforestAuth.new('key')
 
@@ -38,7 +38,7 @@ describe RainforestAuth do
   end
 
   context ".sign" do
-    before :all do
+    before do
       @auth = RainforestAuth.new('key')
     end
 
@@ -63,7 +63,7 @@ describe RainforestAuth do
 
   #TODO: nuke
   context ".sign_old" do
-    before :all do
+    before do
       @auth = RainforestAuth.new('key')
     end
 
@@ -87,7 +87,7 @@ describe RainforestAuth do
   end
 
   context ".verify" do
-    before :all do
+    before do
       @auth = RainforestAuth.new('key')
       @old_digest = '5957ba2707a51852d32309d16184e8adce9c4d8e'
       @digest = '65f2253344287b3c5634a1ce6163fb694b2280b1'
@@ -118,7 +118,7 @@ describe RainforestAuth do
   end
 
   context ".run_if_valid" do
-    before :all do
+    before do
       @auth = RainforestAuth.new('key')
       @object = "test"
       @object.stub(:some_method) { 3 }
