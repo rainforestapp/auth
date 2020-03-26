@@ -33,7 +33,7 @@ describe RainforestAuth do
 
     it "has the correct digest" do
       digest = @url_split[9]
-      @auth.verify(digest, 'before_run', {:run_id => @run_id}).should be_true
+      @auth.verify(digest, 'before_run', {:run_id => @run_id}).should be_truthy
     end
   end
 
@@ -94,26 +94,26 @@ describe RainforestAuth do
     end
 
     it "returns true for a valid signature" do
-      @auth.verify(@digest, 'test', {:option => 1}).should be_true
+      @auth.verify(@digest, 'test', {:option => 1}).should be_truthy
     end
 
     it "returns true for a valid old signature" do
-      @auth.verify(@old_digest, 'test', {:option => 1}).should be_true
+      @auth.verify(@old_digest, 'test', {:option => 1}).should be_truthy
     end
 
     it "returns false for a bad signature" do
-      @auth.verify(@digest, 'test', {:option => 2}).should be_false
+      @auth.verify(@digest, 'test', {:option => 2}).should be_falsey
     end
 
     it "returns false for a bad old signature" do
-      @auth.verify(@old_digest, 'test', {:option => 2}).should be_false
+      @auth.verify(@old_digest, 'test', {:option => 2}).should be_falsey
     end
 
     it "works with no options parameter" do
       #OLD
-      @auth.verify('0a41bdf26fac08a89573a7f5efe0a5145f2730df', 'test').should be_true
+      @auth.verify('0a41bdf26fac08a89573a7f5efe0a5145f2730df', 'test').should be_truthy
       #NEW
-      @auth.verify('d38f897889c808c021a8ed97d2caacdac48b8259', 'test').should be_true
+      @auth.verify('d38f897889c808c021a8ed97d2caacdac48b8259', 'test').should be_truthy
     end
   end
 
