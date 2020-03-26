@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 describe RainforestAuth do
   context "#new" do
     it "stores the key" do
@@ -120,8 +122,7 @@ describe RainforestAuth do
   context ".run_if_valid" do
     before do
       @auth = RainforestAuth.new('key')
-      @object = "test"
-      @object.stub(:some_method) { 3 }
+      @object = OpenStruct.new(some_method: 3)
 
       @digest = '65f2253344287b3c5634a1ce6163fb694b2280b1'
     end
